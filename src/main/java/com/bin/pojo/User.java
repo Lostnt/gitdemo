@@ -3,6 +3,8 @@ package com.bin.pojo;
 public class User {
     String a;
     String b;
+    String c;
+
 
     public String getA() {
         return a;
