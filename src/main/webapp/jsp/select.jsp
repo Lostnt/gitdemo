@@ -252,127 +252,127 @@ td,th{text-align:center;}
                 }
 		})
 	}
-	function TeacherSelect(){
-		Swal({   
-				title: '教师查询',
-	  		html:
-	    		'<input id="swal-input3" class="swal2-input" placeholder="教师名" autofocus="autofocus">' +
-	    		'<input id="swal-input4" class="swal2-input" placeholder="周次">',
-	  		showCancelButton: true,
-		    cancelButtonText: "取消",
-		    confirmButtonText: "查询 ",
-	  		
-		}).then((result) => {
+	function TeacherSelect() {
+        Swal({
+            title: '教师查询',
+            html:
+            '<input id="swal-input3" class="swal2-input" placeholder="教师名" autofocus="autofocus">' +
+            '<input id="swal-input4" class="swal2-input" placeholder="周次">',
+            showCancelButton: true,
+            cancelButtonText: "取消",
+            confirmButtonText: "查询 ",
+
+        }).then((result) = > {
             var input3 = document.getElementById('swal-input3').value;
-	    	var input4 = document.getElementById('swal-input4').value;
-				if(input3=='' || input4==''){
-					alert("内容不能为空！");
-				}else{
-                    var weekNum = Array(" ","one", "two", "three","four","five" ,"six" ,"seven" ,"eight" ,"nine", "ten",
-                        "eleven" ,"twelve" ,"thirteen" ,"fourteen" ,"fifteen" ,"sixteen" ,"seventeen", "eighteen");
-                    var k = parseInt(input4);
-                    $.ajax({
-                        url : "select" ,
-                        type : "post",
-                        data : JSON.stringify({"choose":"teacher","text":input3}),
-                        contentType:"application/json;charset=UTF-8",
-                        dataType:"json",
-                        success : function(data){
-                            var str = data.text;
-                            if(str!=null){
-                            var jsonstr = eval('('+str+')');
-                            var my = document.getElementById("tip");
-                            if (my != null)
-                                my.parentNode.removeChild(my);
-                            var namstr = input3+"     第"+input4+"周";
-                            document.getElementById("name").value = namstr;
-                            $('#tips').append("    <div style=\"margin-left: 20%;font-size: 17px;\" id='tip'> \n" +
-                                "    \t<table border=\"1\" cellspacing=\"0\" width=\"70%\" height=\"420px\">\t\t\n" +
-                                "\t\t    <tr style=\"background-color: #03a9f3;color: white;\">\t\t\n" +
-                                "\t\t        <th>#</th>\t\t\n" +
-                                "\t\t        <th>周一</th>\t\n" +
-                                "\t\t        <th>周二</th>\t\t\n" +
-                                "\t\t        <th>周三</th>\t\t\n" +
-                                "\t\t        <th>周四</th>\n" +
-                                "\t\t        <th>周五</th>\n" +
-                                "\t\t        <th>周六</th>\n" +
-                                "\t\t        <th>周日</th>\n" +
-                                "\t\t    </tr>\t\t\n" +
-                                "\t\t    <tr>\t\t\n" +
-                                "\t\t        <td >1</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期一.一二[weekNum[k]]+"</td>\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期二.一二[weekNum[k]]+"</td>\t\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期三.一二[weekNum[k]]+"</td>\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期四.一二[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期五.一二[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期六.一二[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期日.一二[weekNum[k]]+"</td>\n" +
-                                "\t\t    </tr>\t\n" +
-                                "\t\t    <tr>\t\n" +
-                                "\t\t        <td>2</td>\t\t\t\n" +
-                                "\t\t    </tr>\t\t\n" +
-                                "\t\t    <tr>\t\t\n" +
-                                "\t\t        <td >3</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期一.三四[weekNum[k]]+"</td>\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期二.三四[weekNum[k]]+"</td>\t\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期三.三四[weekNum[k]]+"</td>\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期四.三四[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期五.三四[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期六.三四[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期日.三四[weekNum[k]]+"</td>\n" +
-                                "\t\t    </tr>\t\n" +
-                                "\t\t    <tr>\t\n" +
-                                "\t\t        <td>4</td>\t\t\t\n" +
-                                "\t\t    </tr>\t\n" +
-                                "\t\t    <tr>\t\t\n" +
-                                "\t\t        <td >5</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期一.五六[weekNum[k]]+"</td>\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期二.五六[weekNum[k]]+"</td>\t\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期三.五六[weekNum[k]]+"</td>\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期四.五六[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期五.五六[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期六.五六[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期日.五六[weekNum[k]]+"</td>\n" +
-                                "\t\t    </tr>\t\n" +
-                                "\t\t    <tr>\t\n" +
-                                "\t\t        <td>6</td>\t\t\t\n" +
-                                "\t\t    </tr>\t\n" +
-                                "\t\t    <tr>\t\t\n" +
-                                "\t\t        <td >7</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期一.七八[weekNum[k]]+"</td>\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期二.七八[weekNum[k]]+"</td>\t\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期三.七八[weekNum[k]]+"</td>\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期四.七八[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期五.七八[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期六.七八[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期日.七八[weekNum[k]]+"</td>\n" +
-                                "\t\t    </tr>\t\n" +
-                                "\t\t    <tr>\t\n" +
-                                "\t\t        <td>8</td>\t\t\t\n" +
-                                "\t\t    </tr>\t\n" +
-                                "\t\t    <tr>\t\t\n" +
-                                "\t\t        <td >9</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期一.九十[weekNum[k]]+"</td>\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期二.九十[weekNum[k]]+"</td>\t\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期三.九十[weekNum[k]]+"</td>\t\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期四.九十[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期五.九十[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期六.九十[weekNum[k]]+"</td>\n" +
-                                "\t\t        <td rowspan=\"2\">"+jsonstr.星期日.九十[weekNum[k]]+"</td>\n" +
-                                "\t\t    </tr>\t\n" +
-                                "\t\t    <tr>\t\n" +
-                                "\t\t        <td>10</td>\t\t\t\n" +
-                                "\t\t    </tr>\t\n" +
-                                "\t\t</table>\n" +
-                                "    </div>")
-                        }
-                            else{
-                                alert("未查询到对应信息，请确定是否输入正常！")
-                            }}
-                    });
-				}
-		})
-	}
+        var input4 = document.getElementById('swal-input4').value;
+        if (input3 == '' || input4 == '') {
+            alert("内容不能为空！");
+        } else {
+            var weekNum = Array(" ", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+                "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen");
+            var k = parseInt(input4);
+            $.ajax({
+                url: "select",
+                type: "post",
+                data: JSON.stringify({"choose": "teacher", "text": input3}),
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (data) {
+                    var str = data.text;
+                    if (str != null) {
+                        var jsonstr = eval('(' + str + ')');
+                        var my = document.getElementById("tip");
+                        if (my != null)
+                            my.parentNode.removeChild(my);
+                        var namstr = input3 + "     第" + input4 + "周";
+                        document.getElementById("name").value = namstr;
+                        $('#tips').append("    <div style=\"margin-left: 20%;font-size: 17px;\" id='tip'> \n" +
+                            "    \t<table border=\"1\" cellspacing=\"0\" width=\"70%\" height=\"420px\">\t\t\n" +
+                            "\t\t    <tr style=\"background-color: #03a9f3;color: white;\">\t\t\n" +
+                            "\t\t        <th>#</th>\t\t\n" +
+                            "\t\t        <th>周一</th>\t\n" +
+                            "\t\t        <th>周二</th>\t\t\n" +
+                            "\t\t        <th>周三</th>\t\t\n" +
+                            "\t\t        <th>周四</th>\n" +
+                            "\t\t        <th>周五</th>\n" +
+                            "\t\t        <th>周六</th>\n" +
+                            "\t\t        <th>周日</th>\n" +
+                            "\t\t    </tr>\t\t\n" +
+                            "\t\t    <tr>\t\t\n" +
+                            "\t\t        <td >1</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期一.一二[weekNum[k]] + "</td>\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期二.一二[weekNum[k]] + "</td>\t\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期三.一二[weekNum[k]] + "</td>\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期四.一二[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期五.一二[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期六.一二[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期日.一二[weekNum[k]] + "</td>\n" +
+                            "\t\t    </tr>\t\n" +
+                            "\t\t    <tr>\t\n" +
+                            "\t\t        <td>2</td>\t\t\t\n" +
+                            "\t\t    </tr>\t\t\n" +
+                            "\t\t    <tr>\t\t\n" +
+                            "\t\t        <td >3</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期一.三四[weekNum[k]] + "</td>\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期二.三四[weekNum[k]] + "</td>\t\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期三.三四[weekNum[k]] + "</td>\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期四.三四[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期五.三四[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期六.三四[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期日.三四[weekNum[k]] + "</td>\n" +
+                            "\t\t    </tr>\t\n" +
+                            "\t\t    <tr>\t\n" +
+                            "\t\t        <td>4</td>\t\t\t\n" +
+                            "\t\t    </tr>\t\n" +
+                            "\t\t    <tr>\t\t\n" +
+                            "\t\t        <td >5</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期一.五六[weekNum[k]] + "</td>\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期二.五六[weekNum[k]] + "</td>\t\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期三.五六[weekNum[k]] + "</td>\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期四.五六[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期五.五六[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期六.五六[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期日.五六[weekNum[k]] + "</td>\n" +
+                            "\t\t    </tr>\t\n" +
+                            "\t\t    <tr>\t\n" +
+                            "\t\t        <td>6</td>\t\t\t\n" +
+                            "\t\t    </tr>\t\n" +
+                            "\t\t    <tr>\t\t\n" +
+                            "\t\t        <td >7</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期一.七八[weekNum[k]] + "</td>\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期二.七八[weekNum[k]] + "</td>\t\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期三.七八[weekNum[k]] + "</td>\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期四.七八[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期五.七八[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期六.七八[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期日.七八[weekNum[k]] + "</td>\n" +
+                            "\t\t    </tr>\t\n" +
+                            "\t\t    <tr>\t\n" +
+                            "\t\t        <td>8</td>\t\t\t\n" +
+                            "\t\t    </tr>\t\n" +
+                            "\t\t    <tr>\t\t\n" +
+                            "\t\t        <td >9</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期一.九十[weekNum[k]] + "</td>\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期二.九十[weekNum[k]] + "</td>\t\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期三.九十[weekNum[k]] + "</td>\t\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期四.九十[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期五.九十[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期六.九十[weekNum[k]] + "</td>\n" +
+                            "\t\t        <td rowspan=\"2\">" + jsonstr.星期日.九十[weekNum[k]] + "</td>\n" +
+                            "\t\t    </tr>\t\n" +
+                            "\t\t    <tr>\t\n" +
+                            "\t\t        <td>10</td>\t\t\t\n" +
+                            "\t\t    </tr>\t\n" +
+                            "\t\t</table>\n" +
+                            "    </div>")
+                    }
+                    else {
+                        alert("未查询到对应信息，请确定是否输入正常！")
+                    }
+                }
+            });
+        }
+    });
 	function ClassSelect(){
 		Swal({   
 				title: '班级查询',
