@@ -1,22 +1,13 @@
 package com.bin.pojo;
 
 public class User {
-    String a;
-    String b;
+    String username;
 
-    public String getA() {
-        return a;
+    public String getUsername() {
+        return username;
     }
 
-    public void setA(String a) {
-        this.a = a;
-    }
-
-    public String getB() {
-        return b;
-    }
-
-    public void setB(String b) {
-        this.b = b;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
