@@ -3,7 +3,15 @@ package com.bin.pojo;
 public class Person {
     String uname;
     String upwd;
+    String adfaa;
 
+    public String getAdfaa() {
+        return adfaa;
+    }
+
+    public void setAdfaa(String adfaa) {
+        this.adfaa = adfaa;
+    }
 
     public String getUname() {
         return uname;
