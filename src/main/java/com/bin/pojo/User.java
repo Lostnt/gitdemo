@@ -3,6 +3,15 @@ package com.bin.pojo;
 public class User {
     String a;
     String b;
+    String c;
+
+    public String getC() {
+        return c;
+    }
+
+    public void setC(String c) {
+        this.c = c;
+    }
 
     public String getA() {
         return a;
